@@ -128,8 +128,8 @@ nav {
 .popup {
     position: fixed;
     inset: 0;
-    height: 100%;
-    width: 100%;
+    height: 100svh;
+    width: 100svw;
     z-index: 1000000;
 
     display: none;
@@ -141,7 +141,7 @@ nav {
     .backdrop {
         position: absolute;
         inset: 0;
-        height: 100%;
+        height: 100dvh;
         width: 100%;
         opacity: 0;
         background: #000a;
@@ -165,7 +165,13 @@ nav {
             right: 12px;
             height: 36px;
             width: 36px;
-            background: #000;
+
+            display: grid;
+            place-items: center;
+
+            svg {
+                fill: #000;
+            }
 
             &:hover {
                 cursor: pointer;
