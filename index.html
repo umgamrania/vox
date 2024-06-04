@@ -61,12 +61,7 @@
             </svg>
         </div>
 
-        <div class="dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <div class="dots"></div>
     </div>
 
     <div class="section">
@@ -463,15 +458,28 @@
     <!-- Hero image change script -->
     <script>
         const imageContainer = document.querySelector(".image-container")
-        const dots = document.querySelectorAll(".dots .dot")
         const btnPrev = document.querySelector(".btn-prev")
         const btnNext = document.querySelector(".btn-next")
+        const dotsContainer = document.querySelector(".dots")
+        const dots = []
         const images = [
             "img/hero/1.jpg",
             "img/hero/2.jpg",
             "img/hero/3.jpg",
             "img/hero/4.jpg",
+            "img/hero/5.jpg",
+            "img/hero/6.jpg"
         ]
+
+        // populating dots
+        for(let i = 0; i < images.length; i++) {
+            let dot = document.createElement("div")
+            dot.className = "dot"
+            dotsContainer.appendChild(dot)
+            dots.push(dot)
+        }
+
+        dots[0].classList.add("active")
 
         let activeDot = dots[0]
         let currentImage = 0
