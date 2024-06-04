@@ -26,6 +26,21 @@
         </div>
     </nav>
 
+    <div class="popup-btn">
+        SALE 50% OFF
+    </div>
+
+    <div class="popup">
+        <div class="content">
+            <div class="close-btn"></div>
+            <h1 class="title">We are having a big sale</h1>
+            <div class="desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quos eaque quaerat voluptatem inventore sint blanditiis laboriosam iure quae, voluptates laudantium quasi enim fuga velit hic id doloribus voluptas eum! Voluptatibus magni temporibus aspernatur dolores vitae quia incidunt quae ipsam! Adipisci blanditiis sint officiis corporis reiciendis provident magnam non expedita.
+            </div>
+        </div>
+        <div class="backdrop"></div>
+    </div>
+
     <div class="hero">
         <div class="btn btn-prev">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
@@ -435,6 +450,7 @@
         </div>
     </footer>
 
+    <!-- Mobile menu script -->
     <script>
         const btn = document.querySelector(".mobile-menu-btn")
         const links = document.querySelector("nav .links")
@@ -442,6 +458,7 @@
         btn.onclick = () => links.classList.toggle("open")
     </script>
 
+    <!-- Hero image change script -->
     <script>
         const imageContainer = document.querySelector(".image-container")
         const dots = document.querySelectorAll(".dots .dot")
@@ -506,6 +523,7 @@
         setInterval(nextImage, 5000)
     </script>
 
+    <!-- Product scroll btns -->
     <script>
         let containers = document.querySelectorAll(".section")
 
@@ -524,6 +542,45 @@
                 })
             }
         })
+    </script>
+
+    <!-- Popup -->
+    <script>
+        const popupBtn = document.querySelector(".popup-btn")
+        const popup = document.querySelector(".popup")
+        const backdrop = popup.querySelector(".backdrop")
+        const popupContent = popup.querySelector(".content")
+        const closeBtn = popupContent.querySelector(".close-btn")
+
+        popupBtn.onclick = () => {
+            popup.style.setProperty("display", "flex")
+
+            backdrop.animate({
+                opacity: 1
+            }, {fill: "forwards", duration: 200})
+
+            popupContent.animate({
+                opacity: 1,
+                transform: "translate(0, 0) scale(1)"
+            }, {fill: "forwards", duration: 500, easing: "ease"})
+        }
+
+        closeBtn.onclick = () => {
+            backdrop.animate({
+                opacity: 0
+            }, {fill: "forwards", duration: 200})
+
+            popupContent.animate({
+                opacity: 0,
+                transform: "translate(-50px, 50px) scale(.8)"
+            }, {fill: "forwards", duration: 300, easing: "ease-out"})
+
+            setTimeout(() => {
+                popup.style.setProperty("display", "none")
+            }, 300);
+        }
+
+        backdrop.onclick = closeBtn.onclick
     </script>
 </body>
 

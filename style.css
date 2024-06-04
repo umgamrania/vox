@@ -106,6 +106,84 @@ nav {
     }
 }
 
+.popup-btn {
+    position: fixed;
+    z-index: 1000;
+    bottom: 20px;
+    left: 0;
+    padding: 8px 12px;
+    transform: rotate(-90deg) translateY(50%);
+    transform-origin: left;
+    font-family: "Roboto Condensed";
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: #000;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    --popup-width: 60%;
+
+    .backdrop {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: #000a;
+    }
+
+    .content {
+        position: absolute;
+        z-index: 1;
+        width: var(--popup-width);
+        padding: 20px 22px;
+        background: #fff;
+
+        /* for animation */
+        opacity: 0;
+        transform: translate(-50px, 50px) scale(.8);
+        transform-origin: left bottom;
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            height: 36px;
+            width: 36px;
+            background: #000;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .title {
+            width: 80%;
+            font-family: "Playfair display";
+        }
+
+        .desc {
+            margin-top: 12px;
+            font-family: "Work sans";
+        }
+    }
+}
+
 .hero {
     --section-height: 90svh;
     height: calc(var(--section-height) - 64px);
@@ -229,12 +307,13 @@ nav {
         display: flex;
         scroll-snap-type: x mandatory;
         margin-top: 40px;
-    
+        
         .card {
             padding: 16px;
             width: calc(25% - 12px);
             min-width: calc(25% - 12px);
             scroll-snap-align: start;
+            scroll-snap-stop: always;
             overscroll-behavior-x: none;
     
             .image {
@@ -504,6 +583,10 @@ footer {
                 }
             }
         }
+    }
+
+    .popup {
+        --popup-width: 80%;
     }
 }
 
