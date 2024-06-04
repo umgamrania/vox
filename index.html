@@ -33,7 +33,10 @@
             </svg>
         </div>
 
-        <div class="image-container"></div>
+        <div class="image-container">
+            <div class="back"></div>
+            <div class="front"></div>
+        </div>
 
         <div class="btn btn-next">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
@@ -454,26 +457,32 @@
         let activeDot = dots[0]
         let currentImage = 0
 
+        let front = document.querySelector(".image-container .front")
+        let back = document.querySelector(".image-container .back")
+
+        // initial images
+        front.style.setProperty("background-image", `url(${images[0]})`)
+        back.style.setProperty("background-image", `url(${images[1]})`)
+
         function setImage(index) {
             currentImage = index
             activeDot.classList.remove("active")
             activeDot = dots[index]
             activeDot.classList.add("active")
 
-            imageContainer.animate({
+            front.animate({
                 opacity: 0
-            }, { easing: "ease", fill: "forwards", duration: 200 })
-
+            }, {fill: "forwards", duration: 200})
 
             setTimeout(() => {
-                imageContainer.style.setProperty("background-image", `url(${images[index]})`)
+                front.style.setProperty("background-image", `url(${images[index]})`)
 
-                setTimeout(() => {
-                    imageContainer.animate({
-                        opacity: 1
-                    }, { easing: "ease", fill: "forwards", duration: 200 })
-                }, 10);
-            }, 210);
+                front.animate({
+                    opacity: 1
+                }, {fill: "forwards"})
+
+                back.style.setProperty("background-image", `url(${images[(index + 1) % images.length]})`)
+            }, 201);
         }
 
         function nextImage() {

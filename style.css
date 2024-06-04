@@ -138,12 +138,18 @@ nav {
     }
 
     .image-container {
+        position: relative;
         height: 100%;
         width: 100%;
-        background-image: url("img/hero/1.jpg");
-        background-size: cover;
-        background-position: center;
-        transition: .2s ease;
+
+        div {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
     }
 
     .dots {
@@ -396,6 +402,8 @@ footer {
             iframe {
                 height: 200px;
                 width: 400px;
+
+                max-width: 100%;
             }
         }
     }
